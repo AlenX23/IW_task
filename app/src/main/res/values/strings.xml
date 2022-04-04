@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Products</string>
+    <string name="about_company">О компании</string>
+    <string name="company_name">IRON WATER studio</string>
+    <string name="company_link">www.ironwaterstudio.com</string>
+</resources>
