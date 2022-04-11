@@ -4,11 +4,16 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iw_task.Model.ProductModelClass
 import kotlinx.android.synthetic.main.recycle_item.view.*
 
-class ProductAdapter(private val context: Context, private val items: ArrayList<ProductModelClass>) :
+class ProductAdapter(
+    private val context: Context,
+    private val items: ArrayList<ProductModelClass>,
+    private val supportFragmentManager: FragmentManager
+) :
     RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,10 +27,22 @@ class ProductAdapter(private val context: Context, private val items: ArrayList<
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = items.get(position)
+        val item = items[position]
+        val product = ProductInfoFragment()
 
         holder.productId.text = item.id.toString()
         holder.productName.text = item.name
+
+        product.arguments?.putString("image", item.image)
+        product.arguments?.putString("name", item.name)
+        product.arguments?.putString("des", item.description)
+
+        holder.itemView.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.MainActivity, product)
+                .commit()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -33,7 +50,7 @@ class ProductAdapter(private val context: Context, private val items: ArrayList<
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val productId = view.product_id
-        val productName = view.product_name
+        val productId = view.product_id!!
+        val productName = view.product_name!!
     }
 }

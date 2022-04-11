@@ -32,6 +32,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    sourceSets {
+        main {
+            res {
+                srcDirs 'src/main/res', 'src/main/res/2'
+            }
+        }
+    }
 
 }
 
@@ -52,4 +59,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.0-beta01'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    //Image
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }

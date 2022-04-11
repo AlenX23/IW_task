@@ -8,18 +8,32 @@
         android:id="@+id/mainFragment"
         android:name="com.example.iw_task.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_companyFragment"
             app:destination="@id/companyFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_product_info"
+            app:destination="@id/product_info" />
     </fragment>
     <fragment
         android:id="@+id/companyFragment"
         android:name="com.example.iw_task.CompanyFragment"
         android:label="fragment_company"
-        tools:layout="@layout/fragment_company" >
+        tools:layout="@layout/fragment_company">
         <action
             android:id="@+id/action_companyFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/product_info"
+        android:name="com.example.iw_task.ProductInfoFragment"
+        android:label="fragment_product_info"
+        tools:layout="@layout/fragment_product_info">
+        <action
+            android:id="@+id/action_product_info_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
 </navigation>
